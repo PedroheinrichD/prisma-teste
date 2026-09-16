@@ -11,3 +11,20 @@ generator client {
 datasource db {
   provider = "mysql"
 }
+
+// definindo modelo de dados
+model User {
+  id Int @id @default(autoincrement())
+  email String @unique
+  name String?
+  posts Post[] // um usuario pode ter varios posts
+}
+
+model Post{
+  id Int @id @default(autoincrement())
+  title String
+  text String
+  image String?
+  user User @relation(fields: [userId], references: [id]) // cada post pertence a um usuario
+  userId Int
+}
