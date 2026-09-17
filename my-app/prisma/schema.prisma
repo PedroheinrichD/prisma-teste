@@ -25,6 +25,7 @@ model Post{
   title String
   text String
   image String?
+  published Boolean @default(false) 
   user User @relation(fields: [userId], references: [id]) // cada post pertence a um usuario
   userId Int
 }
